@@ -1,0 +1,17 @@
+{
+    "name": "msi/project4",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "amir kouchaki",
+            "email": "amirkouchaki1@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*"
+    }
+}
