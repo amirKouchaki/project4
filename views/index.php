@@ -2,6 +2,8 @@
  include_once '../vendor/autoload.php';
     use app\models\User;
     use app\config\Database;
+
+    Database::connect();
 ?>
 <html>
 <head>
@@ -20,9 +22,6 @@
         </div>
         <div class="py-6 px-8 border border-black  w-62 mx-auto text-center">
         <?php
-        var_dump(Database::connect());
-        var_dump(Database::connect());
-        new User();
         ?>
         </div>
     </main>
