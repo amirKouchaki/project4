@@ -20,8 +20,8 @@
         </div>
         <div class="py-6 px-8 border border-black  w-62 mx-auto text-center">
         <?php
-        $connect = new Database();
-        var_dump($connect);
+        var_dump(Database::connect());
+        var_dump(Database::connect());
         new User();
         ?>
         </div>

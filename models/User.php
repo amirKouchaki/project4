@@ -7,4 +7,8 @@ class User
     {
         echo 'hello from user';
     }
+    public function create(array $attributes){
+
+    }
+
 }

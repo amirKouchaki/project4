@@ -10,27 +10,27 @@ class Database
     private const PASSWORD = '';
     private const DATABASE_TYPE = 'mysql';
     private const DATABASE_NAME = 'project_four';
-    public \PDO $connection;
+    public static \PDO $connection;
 
-    public function __construct()
+    public static function connect(): \PDO
     {
-        $this->connect();
+        if (!isset(self::$connection)) {
+            try {
+                self::$connection = new \PDO(
+                    self::DATABASE_TYPE . ':Server=' . self::HOST . ';Database=' . self::DATABASE_NAME,
+                    self::USERNAME,
+                    self::PASSWORD
+                );
+                self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                self::$connection->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_CLASS);
+            } catch (\Exception $e) {
+                echo $e;
+            }
+            return self::$connection;
+        }
+
+        return self::$connection;
     }
 
-    public function connect(): \PDO
-    {
-        try {
-        $this->connection = new \PDO(
-            self::DATABASE_TYPE.':host='.self::HOST.';dbname='.self::DATABASE_NAME,
-            self::USERNAME,
-            self::PASSWORD
-        );
-        $this->connection->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
-        $this->connection->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE,\PDO::FETCH_CLASS);
-        }
-        catch (\Exception $e){
-            echo 'connection was not established';
-        }
-        return $this->connection;
-    }
+
 }
